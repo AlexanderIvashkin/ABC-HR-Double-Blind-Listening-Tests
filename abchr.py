@@ -1,9 +1,13 @@
 import csv
 import subprocess
 import sys
+from pathlib import Path
 
 ver='1.0.0'
 release_date='9 March 2019'
+
+# Path to a direcotry where output will be kept (all the files are deleted on each run!)
+path_output='output'
 
 def main():
     """Generate ABC/HR files (data is in an CSV)"""
