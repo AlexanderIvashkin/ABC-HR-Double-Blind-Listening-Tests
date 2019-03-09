@@ -2,9 +2,16 @@ import csv
 import subprocess
 import sys
 
+ver='1.0.0'
+release_date='9 March 2019'
 
 def main():
     """Generate ABC/HR files (data is in an CSV)"""
+
+    print('ABC/HR generator')
+    print('Alexander Ivashkin')
+    print('Version: {}'.format(ver))
+    print('Released on: {}'.format(release_date))
 
     # check command line for arguments
     if len(sys.argv) != 2:
