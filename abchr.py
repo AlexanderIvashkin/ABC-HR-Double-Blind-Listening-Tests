@@ -14,12 +14,16 @@ def main():
     # record command line args
     file_with_test_data = sys.argv[1]
 
+    # Fields that we will use as shell commands
+    flds_cmds=['CmdOriginal', 'CmdHR', 'CmdTested']
+
     with open(file_with_test_data, newline='') as test_description:
         csvreader = csv.DictReader(test_description, delimiter=';', quotechar='"')
-        for z in csvreader:
-            print(z['CmdOriginal'])
-            print(z['CmdHR'])
-            print(z['CmdTested'])
+        for row in csvreader:
+            for cmd in flds_cmds:
+                if subprocess.call(row[cmd], shell=True) != 0:
+                    print('FAILED at converting for Test {:}, running {:} ({:})'.format(row['Test number'], cmd, row[cmd]))
+        print('FINISHED')
 
 if __name__ == '__main__':
     main()
