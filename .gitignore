@@ -1,5 +1,6 @@
-# Audio sources (too big)
+# Audio sources and output (too big)
 src_audio/
+output/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
