@@ -2,6 +2,9 @@
 src_audio/
 output/
 
+# VIM
+*.swp
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
