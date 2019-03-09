@@ -24,13 +24,16 @@ def main():
     # Fields that we will use as shell commands
     flds_cmds=['CmdOriginal', 'CmdHR', 'CmdTested']
 
-    with open(file_with_test_data, newline='') as test_description:
-        csvreader = csv.DictReader(test_description, delimiter=';', quotechar='"')
-        for row in csvreader:
-            for cmd in flds_cmds:
-                if subprocess.call(row[cmd], shell=True) != 0:
-                    print('FAILED at converting for Test {:}, running {:} ({:})'.format(row['Test number'], cmd, row[cmd]))
-        print('FINISHED')
+    try:
+        with open(file_with_test_data, newline='') as test_description:
+            csvreader = csv.DictReader(test_description, delimiter=';', quotechar='"')
+            for row in csvreader:
+                for cmd in flds_cmds:
+                    if subprocess.call(row[cmd], shell=True) != 0:
+                        print('FAILED at converting for Test {:}, running {:} ({:})'.format(row['Test number'], cmd, row[cmd]))
+            print('FINISHED')
+    except:
+        print('FATAL ERROR: Failed to open {:}'.format(file_with_test_data))
 
 if __name__ == '__main__':
     main()
